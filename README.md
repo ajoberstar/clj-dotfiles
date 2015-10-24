@@ -4,30 +4,73 @@
 [![GitHub license](https://img.shields.io/github/license/ike-tools/ike.cljj.svg?style=flat-square)](https://github.com/ajoberstar/clj-dotfiles/blob/master/LICENSE)
 [![Clojars](https://img.shields.io/clojars/v/ike/ike.cljj.svg?style=flat-square)](http://clojars.org/org.ajoberstar/clj-dotfiles)
 
-## Why do you care?
-
-Many people have take to versioning their dotfiles in Git repos.
-
 ## What is it?
 
-ike.cljj is a Clojure library of wrappers around Java APIs.
+A dotfiles helper to symlink from your home directory to your versioned dotfiles
+directory.
 
 ### Current Support
 
-* Map of
+* Symlinking files or directories from dotfiles directory to home directory.
 
 ## Usage
 
-**NOTE:** clj-dotfiles requires Java 7 or higher.
+**NOTE:** clj-dotfiles requires Java 7 or higher to be installed.
 
 * [Release Notes](https://github.com/ajoberstar/clj-dotfiles/releases)
 
-### Installation
+### Installation and Configuration
 
-### Configuration
+* Create a dotfiles directory (e.g. `/home/myname/.dotfiles` or `C:\Users\MyName\dotfiles`).
+* Download one or both of the platform-specific [scripts](https://github.com/ajoberstar/clj-dotfiles/tree/master/scripts).
+* Populate the dotfiles directory with the files you are
+* Create a `config-linux.edn` and/or `config-win.edn` file to store which files/directories get copied on each platform.
 
-### Executing
+#### Example Directory Structure
 
+```
++ dotfiles
+  + gradle-init.d
+    - ....gradle init scripts...
+  + vim
+    - ...vim config...
+  - bashrc
+  - config-linux.edn
+  - config-win.edn
+  - install
+  - install.ps1
+  - vimrc
+```
+
+#### Example Config EDN
+
+The key will be the path relative to your dotfiles directory. The value is the path relative to your home directory the
+symlink should be placed in.
+
+```edn
+{"vimrc" ".vimrc"
+ "vim" ".vim"
+ "bashrc" ".bashrc"
+ "gradle-init.d" ".gradle/init.d"}
+```
+
+#### Resulting Home Directory
+
+```
++ home
+  + .vim => ~/dotfiles/vim
+  + .gradle
+    + init.d => ~/dotfiles/gradle-init.d
+  + dotfiles
+  - .bashrc => ~/dotfiles/bashrc
+  - .vimrc => ~/dotfiles/vimrc
+```
+
+### Execution
+
+**NOTE:** Windows requires administrator priveleges to create symbolic links.
+
+Just run `./install` in your dotfiles directory. If any state is invalid, the script will fail.
 
 ## Questions, Bugs, and Features
 

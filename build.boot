@@ -12,7 +12,7 @@
   (comp
     (aot :all true)
     (pom :project 'org.ajoberstar/clj-dotfiles
-         :version "0.1.0-SNAPSHOT")
+         :version "0.1.0")
     (uber :exclude #{#"(?i)^META-INF\\[^\\]*\.(MF|SF|RSA|DSA)$"
                      #"^((?i)META-INF)\\.*pom\.(properties|xml)$"
                      #"(?i)^META-INF\\INDEX.LIST$"})
