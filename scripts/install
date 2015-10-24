@@ -1,3 +1,21 @@
 #!/bin/bash
 
-echo "You should write some code in here."
+HOME_DIR=$HOME
+DOTFILES_DIR=`dirname "$0"`
+DOTFILES_CONFIG=$DOTFILES_DIR/config-linux.edn
+
+LATEST_VERSION_URL=https://clojars.org/api/artifacts/org.ajoberstar/clj-dotfiles
+LATEST_VERSION=$(curl --silent -H 'Accept: application/x-yaml' $LATEST_VERSION_URL \
+    | grep "latest_release" \
+    | sed s/latest_release:\ //g)
+
+echo "Downloading latest version... $LATEST_VERSION"
+
+JAR_URL="https://clojars.org/repo/org/ajoberstar/clj-dotfiles/$LATEST_VERSION/clj-dotfiles-$LATEST_VERSION.jar"
+JAR_FILE=$DOTFILES_DIR/clj-dotfiles.jar
+
+curl --silent -o $JAR_FILE $JAR_URL
+
+echo "Executing install..."
+
+java -jar $JAR_FILE $HOME_DIR $DOTFILES_DIR $DOTFILES_CONFIG
