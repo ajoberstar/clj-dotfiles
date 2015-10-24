@@ -16,7 +16,7 @@
     (uber :exclude #{#"(?i)^META-INF\\[^\\]*\.(MF|SF|RSA|DSA)$"
                      #"^((?i)META-INF)\\.*pom\.(properties|xml)$"
                      #"(?i)^META-INF\\INDEX.LIST$"})
-    (jar :main 'clj-dotfiles)))
+    (jar :main 'org.ajoberstar.clj-dotfiles)))
 
 (deftask release-local [] (comp (build) (install)))
 
