@@ -2,6 +2,10 @@
   :dependencies '[[org.clojure/clojure "1.7.0"]
                   [ike/ike.cljj "0.2.2"]])
 
+(merge-env! :repositories [["deploy-clojars" {:url "https://clojars.org/repo"
+                                    :username (System/getenv "CLOJARS_USER")
+                                    :password (System/getenv "CLOJARS_PASS")}]])
+
 (deftask build
   "Builds the project."
   []
@@ -21,12 +25,12 @@
     (build)
     (push :ensure-clean true
           :ensure-snapshot true
-          :repo "clojars")))
+          :repo "deploy-clojars")))
 
 (deftask release-final []
   (comp
     (build)
     (push :ensure-clean true
           :ensure-release true
-          :repo "clojars"
+          :repo "deploy-clojars"
           :tag true)))
