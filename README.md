@@ -2,7 +2,7 @@
 
 [![Travis](https://img.shields.io/travis/ajoberstar/clj-dotfiles.svg?style=flat-square)](https://travis-ci.org/ajoberstar/clj-dotfiles)
 [![GitHub license](https://img.shields.io/github/license/ajoberstar/clj-dotfiles.svg?style=flat-square)](https://github.com/ajoberstar/clj-dotfiles/blob/master/LICENSE)
-[![Clojars](https://img.shields.io/clojars/v/org.ajobestar/clj-dotfiles.svg?style=flat-square)](http://clojars.org/org.ajoberstar/clj-dotfiles)
+[![Clojars](https://img.shields.io/clojars/v/org.ajoberstar/clj-dotfiles.svg?style=flat-square)](http://clojars.org/org.ajoberstar/clj-dotfiles)
 
 ## What is it?
 
